@@ -28,7 +28,7 @@ pipeline {
                 
                 powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
 
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\ '
 
                 powershell 'npm install'
 
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo 'Testing on staging in progress...'
                 
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\ '
 
                 powershell 'npm install'
             }
@@ -65,7 +65,7 @@ pipeline {
             steps {
                 echo 'Testing on preprod in progress...'
                 
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\ '
 
                 powershell 'npm install'
             }
@@ -83,7 +83,7 @@ pipeline {
             steps {
                 echo 'Testing on prod in progress...'
                 
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-world-pipeline\\ '
 
                 powershell 'npm install'
             }
