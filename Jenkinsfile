@@ -15,7 +15,6 @@ pipeline {
                 
                 echo 'Hello World'
             }
-            }
         }
       stage('deploy-to-dev') {
             steps {
