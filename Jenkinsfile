@@ -7,13 +7,13 @@ pipeline {
                 echo 'Installing pip dependencies...'
                 steps {
                 // Clone the repository
-                bat 'git clone https://github.com/mtararujs/python-greetings'
+                sh 'git clone https://github.com/mtararujs/python-greetings'
 
                 // Check for the existence of required files if necessary
-                bat 'dir python-greetings\\required_files'
+                sh 'ls python-greetings/required_files'
 
                 // Install the necessary libraries
-                bat 'pip install -r python-greetings\\requirements.txt'
+                sh 'pip install -r python-greetings/requirements.txt'
             }
             }
         }
