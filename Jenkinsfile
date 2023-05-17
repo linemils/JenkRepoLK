@@ -1,54 +1,91 @@
 pipeline {
     agent any
-
+    
     stages {
         stage('install-pip-deps') {
             steps {
-                echo 'Installing pip dependencies...'
-                // Clone the repository
+                echo 'Installing pip deps...'
+                
                 powershell 'git clone https://github.com/mtararujs/python-greetings'
 
-                // Check for the existence of required files if necessary
-                powershell 'ls python-greetings\\required_files'
+                powershell 'ls python-greetings'
 
-                // Install the necessary libraries
                 powershell 'pip install -r python-greetings\\requirements.txt'
+            }
+        }
+        stage('deploy-to-dev') {
+            steps {
+                echo 'Deployment to dev in progress...'
                 
-                echo 'Hello World'
-            }
-        }
-      stage('deploy-to-dev') {
-            steps {
-                echo 'Deploying to dev...'
-                powershell 'pm2 start python-greetings/app.py --name greetings-app-dep-dev -p 7001'
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-dev -p 7001'
+
                 powershell 'pm2 delete all'
             }
         }
-      stage('tests-on-dev') {
+        stage('tests-on-dev') {
             steps {
-                echo 'Testing on dev'
-                powershell 'pm2 start python-greetings/app.py --name greetings-app-test-dev -p 7001'
+                echo 'Testing on dev in progress...'
+                
+                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
+
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+
+                powershell 'npm install'
+
+            }
+        }
+        stage('deploy-to-staging') {
+            steps {
+                echo 'Deployment to staging in progress..'
+                
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7002'
+
                 powershell 'pm2 delete all'
             }
         }
-      stage('deploy-to-staging') {
+        stage('tests-on-staging') {
             steps {
-                echo 'Deploying to staging'
+                echo 'Testing on staging in progress...'
+                
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+
+                powershell 'npm install'
             }
         }
-      stage('tests-on-preprod') {
+        stage('deploy-to-preprod') {
             steps {
-                echo 'Testing on prepod'
+                echo 'Deployment to preprod in progress...'
+                
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-preprod -p 7003'
+
+                powershell 'pm2 delete all'
             }
         }
-      stage('deploy-to-prod') {
+        stage('tests-on-preprod') {
             steps {
-                echo 'Deploying to prod'
+                echo 'Testing on preprod in progress...'
+                
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+
+                powershell 'npm install'
             }
         }
-      stage('tests-on-prod') {
+        stage('deploy-to-prod') {
             steps {
-                echo 'Testing on prod'
+                echo 'Deployment to prod in progress..'
+                
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-prod -p 7004'
+
+                powershell 'pm2 delete all'
+            }
+        }
+        stage('tests-on-prod') {
+            steps {
+                echo 'Testing on prod in progress...'
+                
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipelineldtest\\ '
+
+                powershell 'npm install'
             }
         }
     }
